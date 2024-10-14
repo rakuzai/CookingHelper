@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CookHelper - Meal Details</title>
+</head>
+<body>
+    <h1 th:text="${meal[0].strMeal}"></h1>
+    <img th:src="${meal[0].strMealThumb}" alt="Meal Image" width="300"/>
+    <h2>Category: <span th:text="${meal[0].strCategory}"></span></h2>
+    <h2>Area: <span th:text="${meal[0].strArea}"></span></h2>
+    <h3>Instructions</h3>
+    <p th:text="${meal[0].strInstructions}"></p>
+
+    <h3>Ingredients:</h3>
+    <ul>
+        <li th:each="i : ${#numbers.sequence(1, 20)}" th:if="${meal[0]['strIngredient' + i]} != ''">
+            <span th:text="${meal[0]['strIngredient' + i]}"></span> - <span th:text="${meal[0]['strMeasure' + i]}"></span>
+        </li>
+    </ul>
+
+    <h3>Video</h3>
+    <a th:href="${meal[0].strYoutube}" target="_blank">Watch on YouTube</a>
+</body>
+</html>

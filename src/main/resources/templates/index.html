@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CookHelper - Search Meals</title>
+</head>
+<body>
+    <h1>Welcome to CookHelper</h1>
+    <h2>Find Meals by Main Ingredient</h2>
+    <form action="/" method="get">
+        <input type="text" name="ingredient" placeholder="Enter main ingredient" />
+        <button type="submit">Search</button>
+    </form>
+
+    <div>
+        <h2>Meal Results</h2>
+        <div th:each="meal : ${meals}">
+            <div>
+                <img th:src="${meal.strMealThumb}" alt="Meal Image" width="150"/>
+                <p th:text="${meal.strMeal}"></p>
+                <a th:href="@{/meal(id=${meal.idMeal})}">View Details</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
